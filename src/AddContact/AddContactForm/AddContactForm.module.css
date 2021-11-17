@@ -1,0 +1,79 @@
+.edit_container {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0%;
+  background-color: #3f3f3e;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+}
+
+.modal {
+  height: max-content;
+  width: 80%;
+  background-color: black;
+  display: flex;
+  flex-direction: column;
+  color: white;
+  border-radius: 10px;
+}
+.form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.form h5 {
+  background-color: #f77f00;
+  padding-left: 10px;
+  width: 20%;
+  margin: 10px 0px;
+}
+
+.form input {
+  width: 75%;
+}
+
+.submit {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.submit button {
+  width: 200px;
+  height: 40px;
+  font-weight: 600;
+  background-color: #f77f00;
+  border: none;
+}
+
+.title {
+  text-align: center;
+  width: 100% !important;
+  cursor: pointer;
+  background-color: #f77f00;
+  font-size: 20px;
+}
+
+.form div {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.form div h5 {
+  padding-left: 10px;
+  width: 20%;
+  margin: 10px 0px;
+}
+
+.form p {
+  margin-top: 0%;
+}
+
+.discard {
+  background-color: brown !important;
+}
