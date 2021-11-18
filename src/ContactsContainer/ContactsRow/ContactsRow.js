@@ -6,8 +6,6 @@ import TextLoop from "react-text-loop"; //eslint-disable-line
 
 
 const ContactsRow = (props) => {
-
-
     let ini = props.data.name.split(" ").reduce((prev, curr) => {
         return prev + curr.charAt(0);
     }, "");

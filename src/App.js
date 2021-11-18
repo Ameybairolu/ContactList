@@ -123,11 +123,41 @@ function App() {
     setexpandDetailsID(id);
   }
 
+  const submitAddUserHandler = (state) => {
+
+    if (!window.confirm(`Are you sure you want to add '${state.name}' to the list?`)) {
+      return;
+    }
+
+    fetch('https://jsonplaceholder.typicode.com/posts', {
+      method: 'POST',
+      body: JSON.stringify({
+        ...state
+      }),
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8',
+      },
+    })
+      .then((response) => response.json())
+      .then(result => {
+        let maxID = data.reduce((max, obj) => (max.id > obj.id) ? max : obj);
+
+        result.id = maxID.id + 1;
+
+        let updatedData = [...data];
+        updatedData.push(result);
+
+        updatedData.sort((a, b) => a.name < b.name ? -1 : 1);
+
+        setData(updatedData);
+      });
+  }
+
   return (
     <>
       {showEditDisplay && <EditDisplay user={dataToEdit} submit={submitHandler} />}
       <ContactsContainer data={data} onDelete={deleteUserHandler} onEdit={onClickEditHandler} onExpand={onClickOnUserHandler} expandFor={expandDetailsID} />
-      <AddContact />
+      <AddContact submit={submitAddUserHandler} />
     </>
   );
 }
