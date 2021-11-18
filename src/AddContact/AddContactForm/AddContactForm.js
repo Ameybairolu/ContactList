@@ -180,11 +180,13 @@ const AddContactForm = (props) => {
     function clickOnAddressHandler() {
         const bool = addressVisible;
         addressVisibleChange(!bool);
+        companyVisibleChange(false);
     }
 
     function clickOnCompanyHandler() {
         const bool = companyVisible;
         companyVisibleChange(!bool);
+        addressVisibleChange(false);
     }
 
     return (

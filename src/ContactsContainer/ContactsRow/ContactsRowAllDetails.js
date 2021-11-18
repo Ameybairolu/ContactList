@@ -3,8 +3,10 @@ import { createRef, useEffect } from 'react';
 
 const ContactsRowAllDetails = (props) => {
 
-
     const myRef = createRef();
+
+    // The below function is required so that when we click on any user, the row shifts to the top of the view.
+
     useEffect(() => {
         const delay = setTimeout(() => {
             myRef.current.previousSibling.scrollIntoView({ behavior: "smooth" });

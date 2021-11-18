@@ -2,14 +2,14 @@
 import classes from './ContactsRow.module.css';
 import ContactsAlphabet from '../ContactsAlphabet/ContactsAlphabet';
 import ContactsRowAllDetails from './ContactsRowAllDetails';
-import TextLoop from "react-text-loop"; //eslint-disable-line
+import TextLoop from "react-text-loop";
 
+//This component is responsible for rendering each row and also, when contact information of any one contact is needed to be displayed, this uses ContactsRowAllDetails component to display the additional details
 
 const ContactsRow = (props) => {
     let ini = props.data.name.split(" ").reduce((prev, curr) => {
         return prev + curr.charAt(0);
     }, "");
-
 
     return (
         <>

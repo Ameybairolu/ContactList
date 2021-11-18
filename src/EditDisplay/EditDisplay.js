@@ -7,9 +7,13 @@ const EditDisplay = (props) => {
 
     const [addressVisible, addressVisibleChange] = useState(false);
 
+    // InitialState stores data of the contact that was clicked upon
+
     const initialState = {
         ...props.user
     }
+
+    // Whenever a change is detected at any input, the below function is called through the useReducer hook at like 59
 
     function reducer(state, action) {
         if (action.type === 'name') {
@@ -54,6 +58,8 @@ const EditDisplay = (props) => {
 
     const [state, dispatch] = useReducer(reducer, initialState);
 
+    // Data when edited triggers the below funtion
+
     function uponMakingChanges(changed, event) {
         dispatch({
             type: changed,
@@ -61,15 +67,21 @@ const EditDisplay = (props) => {
         });
     }
 
+    // NOTE: When we commit changes, the below function is called. Which in turn sends data to submitAddUserHandler function in App.js
+
     function submitHandler(event) {
         event.preventDefault();
         props.submit(state);
     }
 
+    // NOTE: When user wants to discard changes, the below function is called
+
     function discardChangesHandler(bool, event) {
         event.preventDefault();
         props.submit(state, bool);
     }
+
+    // NOTE:When we click on the "Address" row in the edit window, we need to display additional details of Address. The below functon is mainly for that
 
     function clickOnAddressHandler() {
         const bool = addressVisible;

@@ -11,13 +11,24 @@ import AddContact from "./AddContact/AddContact";
 
 function App() {
 
+  // data is the variable/state where we are storing every contact detail
+
   const [data, setData] = useState([]);
+
+  // When we click on the edit button on any contact, we need to toggle the showEditDisplay state in order to display the edit window
 
   const [showEditDisplay, setEditDisplay] = useState(false);
 
+  // The data to be edited is received by dataToEdit state, which is forwarded to the EditDisplay.js component.
+
   const [dataToEdit, setDataToEdit] = useState({});
 
+  // When we click on any contact row, the details for that is displayed right below the row. expandDetailsID is a state that stores the ID of the row clicked, to achieve the above objective.
+  // NOTE: Go to line 130
+
   const [expandDetailsID, setexpandDetailsID] = useState(-1);
+
+  // NOTE: To get data from the API
 
   const fetchContactDataFromAPI = useCallback(
     async () => {
@@ -41,7 +52,7 @@ function App() {
   }, [fetchContactDataFromAPI]);
 
 
-  // Delte Data function
+  // NOTE: To delete a row
   async function deleteUserHandler(id, e) {
     try {
       if (e) {
@@ -68,6 +79,8 @@ function App() {
       console.log(e);
     }
   };
+
+  // NOTE: when we click on the edit button, we need to displau the edit window. The below function is for that
 
   const onClickEditHandler = (id, e) => {
     if (e) {
@@ -114,6 +127,7 @@ function App() {
       });
   }
 
+  // NOTE: The below function loads extra detail for the target contact
 
   const onClickOnUserHandler = (id) => {
     if (expandDetailsID === id) {
@@ -122,6 +136,8 @@ function App() {
     }
     setexpandDetailsID(id);
   }
+
+  // NOTE: When the user adds a new contact, the below function is called
 
   const submitAddUserHandler = (state) => {
 
